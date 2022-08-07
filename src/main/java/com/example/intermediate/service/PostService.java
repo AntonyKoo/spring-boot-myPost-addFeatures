@@ -5,7 +5,7 @@ import com.example.intermediate.controller.response.PostResponseDto;
 import com.example.intermediate.domain.Comment;
 import com.example.intermediate.domain.Member;
 import com.example.intermediate.domain.Post;
-import com.example.intermediate.service.request.PostRequestDto;
+import com.example.intermediate.controller.request.PostRequestDto;
 import com.example.intermediate.controller.response.ResponseDto;
 import com.example.intermediate.jwt.TokenProvider;
 import com.example.intermediate.repository.CommentRepository;

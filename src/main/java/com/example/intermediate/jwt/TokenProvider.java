@@ -4,7 +4,7 @@ import com.example.intermediate.domain.Member;
 import com.example.intermediate.domain.RefreshToken;
 import com.example.intermediate.domain.UserDetailsImpl;
 import com.example.intermediate.controller.response.ResponseDto;
-import com.example.intermediate.service.request.TokenDto;
+import com.example.intermediate.controller.request.TokenDto;
 import com.example.intermediate.repository.RefreshTokenRepository;
 import com.example.intermediate.shared.Authority;
 import io.jsonwebtoken.ExpiredJwtException;

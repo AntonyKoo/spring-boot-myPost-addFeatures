@@ -1,7 +1,7 @@
 package com.example.intermediate.controller;
 
-import com.example.intermediate.service.request.LoginRequestDto;
-import com.example.intermediate.service.request.MemberRequestDto;
+import com.example.intermediate.controller.request.LoginRequestDto;
+import com.example.intermediate.controller.request.MemberRequestDto;
 import com.example.intermediate.controller.response.ResponseDto;
 import com.example.intermediate.service.MemberService;
 import javax.servlet.http.HttpServletRequest;

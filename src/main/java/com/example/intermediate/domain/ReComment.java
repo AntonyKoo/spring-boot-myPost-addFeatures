@@ -1,6 +1,6 @@
 package com.example.intermediate.domain;
 
-import com.example.intermediate.service.request.ReCommentRequestDto;
+import com.example.intermediate.controller.request.ReCommentRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -16,16 +16,18 @@ import javax.persistence.*;
 public class ReComment extends Timestamped {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
     private String content;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "comment_id")
+    @JoinColumn(name = "comment_id", nullable = false)
     private Comment comment;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id", nullable = false)
     private Member member;
 
     public void update(ReCommentRequestDto reCommentRequestDto) {
@@ -35,6 +37,5 @@ public class ReComment extends Timestamped {
     public boolean validateMember(Member member) {
         return !this.member.equals(member);
     }
-
 
 }

@@ -1,4 +1,4 @@
-package com.example.intermediate.service.request;
+package com.example.intermediate.controller.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -5,7 +5,7 @@ import com.example.intermediate.controller.response.CommentResponseDto;
 import com.example.intermediate.domain.Comment;
 import com.example.intermediate.domain.Member;
 import com.example.intermediate.domain.Post;
-import com.example.intermediate.service.request.CommentRequestDto;
+import com.example.intermediate.controller.request.CommentRequestDto;
 import com.example.intermediate.jwt.TokenProvider;
 import com.example.intermediate.repository.CommentRepository;
 import java.util.ArrayList;
