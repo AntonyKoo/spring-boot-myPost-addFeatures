@@ -7,6 +7,7 @@ import com.example.intermediate.domain.Comment;
 import com.example.intermediate.domain.Member;
 import com.example.intermediate.domain.ReComment;
 import com.example.intermediate.jwt.TokenProvider;
+import com.example.intermediate.repository.CommentRepository;
 import com.example.intermediate.repository.ReCommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
