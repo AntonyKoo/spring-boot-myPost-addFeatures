@@ -28,17 +28,21 @@ public class ReCommentService {
 
     @Transactional  // 공통으로 들어가는 Response에 대한 Dto
     public ResponseDto<?> createRecomment(ReCommentRequestDto requestDto, HttpServletRequest request) {
+        // 요청의 헤더에 토큰 있늬?
         if (null == request.getHeader("Refresh-Token")) {
             return ResponseDto.fail("MEMBER_NOT_FOUND",
                     "로그인이 필요합니다.");
         }
 
-        if (null == request.getHeader("Authorization")) {  // Refresh와 Authorization 한 번에 할 수 없나?
+        // 헤더에 Auth 토큰 있늬?
+        // Refresh와 Authorization 한 번에 할 수 없나?
+        if (null == request.getHeader("Authorization")) {
             return ResponseDto.fail("MEMBER_NOT_FOUND",
                     "로그인이 필요합니다.");
         }
 
-        Member member = validateMember(request);  // 이용자 검증 로직
+        // 위에서 토큰 확인 후, 이용자 검증 로직
+        Member member = validateMember(request);
         if (null == member) {
             return ResponseDto.fail("INVALID_TOKEN", "Token이 유효하지 않습니다.");
         }
