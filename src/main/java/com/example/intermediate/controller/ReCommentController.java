@@ -17,7 +17,7 @@ public class ReCommentController {
 
     //  대댓글 작성 기능
     @RequestMapping(value = "/api/auth/reply", method = RequestMethod.POST)
-    public ResponseDto<?> createReComment(@RequestBody ReCommentRequestDto requestDto,
+    public ResponseDto<?> createRecomment(@RequestBody ReCommentRequestDto requestDto,  // dto 안에 commentId, content
                                           HttpServletRequest request) {
         return reCommentService.createRecomment(requestDto, request);
     }
