@@ -1,4 +1,4 @@
-package com.example.intermediate.service.request;
+package com.example.intermediate.controller.request;
 
 import javax.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;

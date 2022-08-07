@@ -1,6 +1,6 @@
 package com.example.intermediate.domain;
 
-import com.example.intermediate.service.request.CommentRequestDto;
+import com.example.intermediate.controller.request.CommentRequestDto;
 
 import javax.persistence.*;
 

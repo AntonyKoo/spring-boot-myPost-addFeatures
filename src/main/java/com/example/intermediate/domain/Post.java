@@ -1,6 +1,6 @@
 package com.example.intermediate.domain;
 
-import com.example.intermediate.service.request.PostRequestDto;
+import com.example.intermediate.controller.request.PostRequestDto;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;

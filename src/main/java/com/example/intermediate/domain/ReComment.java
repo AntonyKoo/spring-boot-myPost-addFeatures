@@ -1,6 +1,6 @@
 package com.example.intermediate.domain;
 
-import com.example.intermediate.service.request.ReCommentRequestDto;
+import com.example.intermediate.controller.request.ReCommentRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

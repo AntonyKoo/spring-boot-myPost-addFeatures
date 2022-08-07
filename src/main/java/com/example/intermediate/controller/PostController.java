@@ -1,6 +1,6 @@
 package com.example.intermediate.controller;
 
-import com.example.intermediate.service.request.PostRequestDto;
+import com.example.intermediate.controller.request.PostRequestDto;
 import com.example.intermediate.controller.response.ResponseDto;
 import com.example.intermediate.service.PostService;
 import javax.servlet.http.HttpServletRequest;

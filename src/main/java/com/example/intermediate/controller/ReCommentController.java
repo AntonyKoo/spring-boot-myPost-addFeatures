@@ -1,6 +1,6 @@
 package com.example.intermediate.controller;
 
-import com.example.intermediate.service.request.ReCommentRequestDto;
+import com.example.intermediate.controller.request.ReCommentRequestDto;
 import com.example.intermediate.controller.response.ResponseDto;
 import com.example.intermediate.service.ReCommentService;
 import lombok.RequiredArgsConstructor;

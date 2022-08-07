@@ -2,10 +2,10 @@ package com.example.intermediate.service;
 
 import com.example.intermediate.controller.response.MemberResponseDto;
 import com.example.intermediate.domain.Member;
-import com.example.intermediate.service.request.LoginRequestDto;
-import com.example.intermediate.service.request.MemberRequestDto;
+import com.example.intermediate.controller.request.LoginRequestDto;
+import com.example.intermediate.controller.request.MemberRequestDto;
 import com.example.intermediate.controller.response.ResponseDto;
-import com.example.intermediate.service.request.TokenDto;
+import com.example.intermediate.controller.request.TokenDto;
 import com.example.intermediate.jwt.TokenProvider;
 import com.example.intermediate.repository.MemberRepository;
 import java.util.Optional;
