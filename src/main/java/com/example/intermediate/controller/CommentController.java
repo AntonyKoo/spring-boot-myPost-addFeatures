@@ -26,7 +26,7 @@ public class CommentController {
     return commentService.createComment(requestDto, request);
   }
 
-
+  // 특정 post의 댓글 전체 보기
   @RequestMapping(value = "/api/comment/{id}", method = RequestMethod.GET)
   public ResponseDto<?> getAllComments(@PathVariable Long id) {
     return commentService.getAllCommentsByPost(id);
