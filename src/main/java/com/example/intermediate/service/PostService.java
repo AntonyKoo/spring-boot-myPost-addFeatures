@@ -2,18 +2,23 @@ package com.example.intermediate.service;
 
 import com.example.intermediate.controller.response.CommentResponseDto;
 import com.example.intermediate.controller.response.PostResponseDto;
+import com.example.intermediate.controller.response.ReCommentResponseDto;
 import com.example.intermediate.domain.Comment;
 import com.example.intermediate.domain.Member;
 import com.example.intermediate.domain.Post;
 import com.example.intermediate.controller.request.PostRequestDto;
 import com.example.intermediate.controller.response.ResponseDto;
+import com.example.intermediate.domain.ReComment;
 import com.example.intermediate.jwt.TokenProvider;
 import com.example.intermediate.repository.CommentRepository;
 import com.example.intermediate.repository.PostRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletRequest;
+
+import com.example.intermediate.repository.ReCommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,6 +29,8 @@ public class PostService {
 
   private final PostRepository postRepository;
   private final CommentRepository commentRepository;
+
+  private final ReCommentRepository reCommentRepository;
 
   private final TokenProvider tokenProvider;
 
@@ -62,8 +69,9 @@ public class PostService {
     );
   }
 
+  // 특정 게시글 조회
   @Transactional(readOnly = true)
-  public ResponseDto<?> getPost(Long id) {
+  public ResponseDto<?> getPost(Long id) {  // 게시글의 id
     Post post = isPresentPost(id);
     if (null == post) {
       return ResponseDto.fail("NOT_FOUND", "존재하지 않는 게시글 id 입니다.");
@@ -71,6 +79,7 @@ public class PostService {
 
     List<Comment> commentList = commentRepository.findAllByPost(post);
     List<CommentResponseDto> commentResponseDtoList = new ArrayList<>();
+    List<ReCommentResponseDto> reCommentResponseDtoList = new ArrayList<>();
 
     for (Comment comment : commentList) {
       commentResponseDtoList.add(
@@ -78,6 +87,7 @@ public class PostService {
               .id(comment.getId())
               .author(comment.getMember().getNickname())
               .content(comment.getContent())
+              .reCommentResponseDtoList(reCommentRepository.findAllByComment(comment).stream().map(ReCommentResponseDto::new).collect(Collectors.toList()))
               .createdAt(comment.getCreatedAt())
               .modifiedAt(comment.getModifiedAt())
               .build()
@@ -88,7 +98,7 @@ public class PostService {
         PostResponseDto.builder()
             .id(post.getId())
             .title(post.getTitle())
-//            .content(post.getContent())
+            .content(post.getContent())
             .commentResponseDtoList(commentResponseDtoList)
             .author(post.getMember().getNickname())
             .createdAt(post.getCreatedAt())
