@@ -38,5 +38,4 @@ public class ReComment extends Timestamped {
         return !this.member.equals(member);
     }
 
-
 }

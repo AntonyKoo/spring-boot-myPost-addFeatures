@@ -1,7 +1,6 @@
 package com.example.intermediate.domain;
 
 import com.example.intermediate.controller.request.CommentRequestDto;
-
 import javax.persistence.*;
 
 import lombok.AllArgsConstructor;
