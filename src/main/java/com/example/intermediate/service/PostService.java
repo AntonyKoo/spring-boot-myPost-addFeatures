@@ -29,11 +29,10 @@ public class PostService {
 
   private final PostRepository postRepository;
   private final CommentRepository commentRepository;
-
   private final ReCommentRepository reCommentRepository;
-
   private final TokenProvider tokenProvider;
 
+  // 게시글 작성
   @Transactional
   public ResponseDto<?> createPost(PostRequestDto requestDto, HttpServletRequest request) {
     if (null == request.getHeader("Refresh-Token")) {
@@ -61,7 +60,7 @@ public class PostService {
         PostResponseDto.builder()
             .id(post.getId())
             .title(post.getTitle())
-//            .content(post.getContent())
+            .content(post.getContent())
             .author(post.getMember().getNickname())
             .createdAt(post.getCreatedAt())
             .modifiedAt(post.getModifiedAt())
@@ -87,7 +86,7 @@ public class PostService {
               .id(comment.getId())
               .author(comment.getMember().getNickname())
               .content(comment.getContent())
-              .reCommentResponseDtoList(reCommentRepository.findAllByComment(comment).stream().map(ReCommentResponseDto::new).collect(Collectors.toList()))
+              .reCommentResponseDtoList(reCommentRepository.findAllByCommentId(comment.getId()).stream().map(ReCommentResponseDto::new).collect(Collectors.toList()))
               .createdAt(comment.getCreatedAt())
               .modifiedAt(comment.getModifiedAt())
               .build()
@@ -107,11 +106,13 @@ public class PostService {
     );
   }
 
+  // 게시글 전체 조회
   @Transactional(readOnly = true)
   public ResponseDto<?> getAllPost() {
-    return ResponseDto.success(postRepository.findAllByOrderByModifiedAtDesc());
+    return ResponseDto.success(postRepository.findAllByOrderByModifiedAtDesc().stream().map(PostResponseDto::new).collect(Collectors.toList()));
   }
 
+  // 게시글 업데이트
   @Transactional
   public ResponseDto<Post> updatePost(Long id, PostRequestDto requestDto, HttpServletRequest request) {
     if (null == request.getHeader("Refresh-Token")) {
