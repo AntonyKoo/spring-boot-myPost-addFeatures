@@ -1,5 +1,6 @@
 package com.example.intermediate.controller.response;
 
+import com.example.intermediate.domain.Post;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,4 +22,11 @@ public class PostResponseDto {
   private LocalDateTime createdAt;
   private LocalDateTime modifiedAt;
 
+  public PostResponseDto(Post entity) {
+    this.id = entity.getId();
+    this.title = entity.getTitle();
+    this.author = entity.getMember().getNickname();
+    this.createdAt =entity.getCreatedAt();
+    this.modifiedAt = entity.getModifiedAt();
+  }
 }
