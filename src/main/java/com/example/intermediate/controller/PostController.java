@@ -36,12 +36,14 @@ public class PostController {
     return postService.getAllPost();
   }
 
+  // 게시글 수정
   @RequestMapping(value = "/api/auth/post/{id}", method = RequestMethod.PUT)
   public ResponseDto<?> updatePost(@PathVariable Long id, @RequestBody PostRequestDto postRequestDto,
       HttpServletRequest request) {
     return postService.updatePost(id, postRequestDto, request);
   }
 
+  // 게시글 삭제
   @RequestMapping(value = "/api/auth/post/{id}", method = RequestMethod.DELETE)
   public ResponseDto<?> deletePost(@PathVariable Long id,
       HttpServletRequest request) {
