@@ -29,8 +29,7 @@ public class Comment extends Timestamped {
   @ManyToOne(fetch = FetchType.LAZY)
   private Post post;
 
-  @OneToMany(fetch = FetchType.LAZY)
-  @JoinColumn(name = "recomment_id")
+  @OneToMany(mappedBy = "comment", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
   List<ReComment> reComments;
 
   @Column(nullable = false)
