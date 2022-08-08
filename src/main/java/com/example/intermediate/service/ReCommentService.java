@@ -7,7 +7,6 @@ import com.example.intermediate.domain.Comment;
 import com.example.intermediate.domain.Member;
 import com.example.intermediate.domain.ReComment;
 import com.example.intermediate.jwt.TokenProvider;
-import com.example.intermediate.repository.CommentRepository;
 import com.example.intermediate.repository.ReCommentRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -72,7 +71,7 @@ public class ReCommentService {
     }
 
     @Transactional(readOnly = true)
-    public ResponseDto<?> getAllReCommentsByComment(Long commentId) {
+    public ResponseDto<?> getAllReCommentsByCommentId(Long commentId) {
         Comment comment = commentService.isPresentComment(commentId);
         if (null == comment) {
             return ResponseDto.fail("NOT_FOUND", "존재하지 않는 게시글 id 입니다.");
