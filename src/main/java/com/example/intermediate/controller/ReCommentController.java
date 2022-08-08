@@ -25,7 +25,7 @@ public class ReCommentController {
     // 게시글 댓글을 바라보는 **모든 대댓글 조회
     @RequestMapping(value = "/api/reply/{id}", method = RequestMethod.GET)
     public ResponseDto<?> getAllReComments(@PathVariable Long id) {
-        return reCommentService.getAllReCommentsByComment(id);
+        return reCommentService.getAllReCommentsByCommentId(id);
     }
 
     // 대댓글 수정 기능

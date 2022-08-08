@@ -17,17 +17,20 @@ public class PostController {
 
   private final PostService postService;
 
+  // 게시글 작성
   @RequestMapping(value = "/api/auth/post", method = RequestMethod.POST)
   public ResponseDto<?> createPost(@RequestBody PostRequestDto requestDto,
       HttpServletRequest request) {
     return postService.createPost(requestDto, request);
   }
 
+  // 특정 게시글 조회  ** 댓글 & 대댓글 & count(좋아요) 같이 response
   @RequestMapping(value = "/api/post/{id}", method = RequestMethod.GET)
   public ResponseDto<?> getPost(@PathVariable Long id) {
     return postService.getPost(id);
   }
 
+  // 게시글 전체 조회
   @RequestMapping(value = "/api/post", method = RequestMethod.GET)
   public ResponseDto<?> getAllPosts() {
     return postService.getAllPost();
