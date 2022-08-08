@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -70,14 +71,15 @@ public class ReCommentService {
         );
     }
 
+    // 특정 댓글을 바라보는 모든 대댓글 조회
     @Transactional(readOnly = true)
     public ResponseDto<?> getAllReCommentsByCommentId(Long commentId) {
         Comment comment = commentService.isPresentComment(commentId);
         if (null == comment) {
-            return ResponseDto.fail("NOT_FOUND", "존재하지 않는 게시글 id 입니다.");
+            return ResponseDto.fail("NOT_FOUND", "존재하지 않는 댓글 id 입니다.");
         }
 
-        List<ReComment> reCommentList = reCommentRepository.findAllByComment(comment);
+        List<ReComment> reCommentList = reCommentRepository.findAllByCommentId(commentId);
         List<ReCommentResponseDto> reCommentResponseDtoList = new ArrayList<>();
 
         for (ReComment reComment : reCommentList) {
