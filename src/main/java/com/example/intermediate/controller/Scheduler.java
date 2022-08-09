@@ -19,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 public class Scheduler {
 
     private  final PostRepository postRepository;
-    private  final PostService postService;
 
     @Scheduled(cron = "0 0/1 * * * *")
     @Transactional
